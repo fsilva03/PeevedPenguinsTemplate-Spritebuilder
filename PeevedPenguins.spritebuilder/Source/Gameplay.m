@@ -54,6 +54,11 @@
     
 }
 
+-(void)retry {
+    // to reload level after clicking "Retry" button on gameplay
+    [[CCDirector sharedDirector] replaceScene: [CCBReader loadAsScene:@"Gameplay"]];
+}
+
 
 
 

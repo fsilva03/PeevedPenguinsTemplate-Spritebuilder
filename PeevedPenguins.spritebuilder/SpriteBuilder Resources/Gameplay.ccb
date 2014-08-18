@@ -55,7 +55,7 @@
 					<string>Position</string>
 					<key>value</key>
 					<array>
-						<real>221.99998474121094</real>
+						<real>227.99998474121094</real>
 						<real>106.99998474121094</real>
 						<integer>0</integer>
 						<integer>0</integer>
@@ -508,7 +508,7 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>234</real>
+											<real>240</real>
 											<real>188</real>
 											<integer>0</integer>
 											<integer>0</integer>
@@ -662,7 +662,7 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>248</real>
+											<real>254</real>
 											<real>89</real>
 											<integer>0</integer>
 											<integer>0</integer>
@@ -751,8 +751,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>113</real>
-											<real>91</real>
+											<real>128</real>
+											<real>88</real>
 											<integer>0</integer>
 											<integer>0</integer>
 											<integer>0</integer>
@@ -780,6 +780,8 @@
 										<string>Bear.ccb</string>
 									</dict>
 								</array>
+								<key>selected</key>
+								<true/>
 							</dict>
 							<dict>
 								<key>UUID</key>
@@ -1236,8 +1238,6 @@
 										</array>
 									</dict>
 								</array>
-								<key>selected</key>
-								<true/>
 							</dict>
 						</array>
 						<key>customClass</key>

@@ -12,9 +12,13 @@
     CCPhysicsNode *_physicsNode;
     CCNode *_catapultArm;
     CCNode *_levelNode;
+    
     CCNode *_contentNode;
+    
     CCNode *_pullbackNode;
     
+    CCNode *_mouseJointNode;
+    CCPhysicsJoint *_mouseJoint;
 }
 
 
@@ -37,8 +41,44 @@
 
 // called everytime there is a touch
 -(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
-    [self launchPenguin];
+    CGPoint touchLocation = [touch locationInNode:_contentNode];
+    
+    // start catapult dragging when a touch on the catapult is sensed
+    if (CGRectContainsPoint([_catapultArm boundingBox], touchLocation)){
+        
+        // move catapult to touch location
+        _mouseJointNode.position = touchLocation;
+        
+        // creates the joint
+        _mouseJoint = [CCPhysicsJoint connectedSpringJointWithBodyA:_mouseJointNode.physicsBody bodyB:_catapultArm.physicsBody anchorA:ccp(0, 0) anchorB:ccp(34, 138) restLength:0.f stiffness:3000.f damping:150.f];
+        
+    }
 }
+
+// these two methods cover the catapult moving
+-(void)touchMoved:(UITouch *)touch withEvent:(UIEvent *)event {
+    //whenever the touch moves, update the position of the mouseJointNode
+    CGPoint touchLocation = [ touch locationInNode:_contentNode];
+    _mouseJointNode.position = touchLocation;
+    
+}
+-(void)releaseCatapult {
+    if(_mouseJoint != nil) {
+        //releases catapult and it snaps backs
+        [_mouseJoint invalidate];
+        _mouseJoint = nil;
+    }
+}
+
+-(void) touchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
+    [self releaseCatapult];
+}
+-(void) touchCancelled:(UITouch *)touch withEvent:(UIEvent *)event {
+    //this applies to when the touch comes off the screen (cancelled)
+    [self releaseCatapult];
+}
+
+
 
 -(void)launchPenguin {
     

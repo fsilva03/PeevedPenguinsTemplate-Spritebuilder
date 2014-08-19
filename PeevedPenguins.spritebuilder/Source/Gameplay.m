@@ -42,7 +42,7 @@
 
 // called everytime there is a touch
 -(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
-    CGPoint touchLocation = [touch locationInNode:_contentNode];
+    CGPoint touchLocation = [touch locationInWorld:_contentNode];
     
     // start catapult dragging when a touch on the catapult is sensed
     if (CGRectContainsPoint([_catapultArm boundingBox], touchLocation)){
